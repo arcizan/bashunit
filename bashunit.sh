@@ -25,7 +25,7 @@ function run_tests(){
 		local _teardown_everytime_function=$(typeset -F teardown_everytime)
 		local _test_function _test_cnt=0 _success_cnt=0 _failure_cnt=0 _failure_record_file
 
-		_failure_record_file=$(mktemp) || return $?
+		_failure_record_file=$(mktemp) || exit $?
 
 		trap 'exit 2' 1 2 3 15
 		trap 'rm -f -- "$_failure_record_file"' 0
